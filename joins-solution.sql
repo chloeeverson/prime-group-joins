@@ -24,5 +24,13 @@ JOIN warehouse_product wp ON wp.product_id = p.id
 JOIN warehouse w ON w.id = wp.warehouse_id
 WHERE p.description = 'diet pepsi';
 
+--5. Get the number of orders for each customer. NOTE: It is OK if those without orders are not included in results.
+SELECT c.first_name, c.last_name, COUNT(*) FROM orders o
+JOIN addresses a ON o.address_id = a.id
+JOIN customers c ON c.id = a.customer_id
+GROUP BY c.id;
+
+--6. How many customers do we have?
+SELECT COUNT(*) FROM customers;
 
 
